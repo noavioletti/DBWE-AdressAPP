@@ -1,0 +1,28 @@
+<!--base.html Inhalt laden-->
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    <!--Titel Seite-->
+    <h1>Register</h1>
+    <!--Post Methode für erstellen Benutzeraccount-->
+    <form method="POST" action="/register">
+        <!--Verknüpfung Eingabe Element mit username-->
+        <label for="username">Benutzername:</label>
+        <!--Definition Format Text und Feld required-->
+        <input type="text" id="username" name="username" required><br>
+        <!--Verknüpfung Eingabe Element mit email-->
+        <label for="email">Email:</label>
+        <!--Definition Format email-->
+        <input type="email" id="email" name="email"><br>
+        <!--Verknüpfung Eingabe Element mit password-->
+        <label for="password">Passwort:</label>
+        <!--Definition Format Password und Feld required-->
+        <input type="password" id="password" name="password" required><br>
+        <!--Button register-->
+        <button type="submit">Register</button>
+    </form>
+    <!--Link zu Login Seite wennn bereits Accoutn existiert-->
+    <a href="/login">Bereits einen Account? Login</a>
+</body>
+{% endblock %}

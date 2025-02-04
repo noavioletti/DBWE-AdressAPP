@@ -1,0 +1,37 @@
+<!--base.html Inhalt laden-->
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    <!--Titel Seite-->
+    <h1>Login</h1>
+    <!-- Flash-Nachrichten wiedergeben für Fehler -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!--Post Methode für Login Benutzeraccount-->
+    <form method="POST">
+        <!--Verknüpfung Eingabe Element mit username-->
+        <label for="username">Benutzername:</label>
+        <!--Definition Format Text und Feld required-->
+        <input type="text" name="username" id="username" required>
+        <br>
+        <!--Verknüpfung Eingabe Element mit password-->
+        <label for="password">Passwort:</label>
+        <!--Definition Format Password und Feld required-->
+        <input type="password" name="password" id="password" required>
+        <br>
+        <!--Button Login-->
+        <button type="submit">Login</button>
+    </form>
+    <!--Link zu Register Seite wenn noch kein Account vorhanden ist-->
+    <a href="{{ url_for('main.register') }}">Noch kein Account? Registriere dich hier.</a>
+</body>
+{% endblock %}

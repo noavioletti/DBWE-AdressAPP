@@ -1,0 +1,52 @@
+<!--base.html Inhalt laden-->
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    <!--Titel Seite-->
+    <h1>Neue Adresse erstellen</h1>
+    <!--Post Methode für Adresse hinzufügen-->
+    <form method="POST" action="/add_address">
+        <!--Verknüpfung Eingabe Element mit vorname-->
+        <label for="vorname">Vorname:</label>
+        <!--Definition Format Text und Feld required-->
+        <input type="text" id="vorname" name="vorname" required><br>
+        <!--Verknüpfung Eingabe Element mit nachname-->
+        <label for="nachname">Nachname:</label>
+        <!--Definition Format Text und Feld required-->
+        <input type="text" id="nachname" name="nachname" required><br>
+        <!--Verknüpfung Eingabe Element mit telefonnummer_privat-->
+        <label for="telefonnummer_privat">Telefonnummer Privat:</label>
+        <!--Definition Format Text und Feld required-->
+        <input type="text" id="telefonnummer_privat" name="telefonnummer_privat" required><br>
+        <!--Verknüpfung Eingabe Element mit telefonnummer_geschaeftlich-->
+        <label for="telefonnummer_geschaeftlich">Telefonnummer Geschäftlich:</label>
+        <!--Definition Format Text-->
+        <input type="text" id="telefonnummer_geschaeftlich" name="telefonnummer_geschaeftlich"><br>
+        <!--Verknüpfung Eingabe Element mit email-->
+        <label for="email">Email:</label>
+        <!--Definition Format Email-->
+        <input type="email" id="email" name="email"><br>
+        <!--Verknüpfung Eingabe Element mit strasse-->
+        <label for="strasse">Strasse:</label>
+        <!--Definition Format Text und Feld required-->
+        <input type="text" id="strasse" name="strasse" required><br>
+        <!--Verknüpfung Eingabe Element mit plz-->
+        <label for="plz">PLZ:</label>
+        <!--Definition Format Number und Feld required-->
+        <input type="number" id="plz" name="plz" required><br>
+        <!--Verknüpfung Eingabe Element mit ort-->
+        <label for="ort">Ort:</label>
+        <!--Definition Format Text und Feld required-->
+        <input type="text" id="ort" name="ort" required><br>
+        <!--Verknüpfung Eingabe Element mit land-->
+        <label for="land">Land:</label>
+        <!--Definition Format Text und Feld required-->
+        <input type="text" id="land" name="land" required><br>
+        <!--Button für hinzufügen von Adresse-->
+        <button type="submit">hinzufügen</button>
+    </form>
+    <!--Link zurück zum Dashboard-->
+    <a href="/dashboard">zurück zum Dashboard</a>
+</body>
+{% endblock %}

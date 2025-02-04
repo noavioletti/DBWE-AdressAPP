@@ -1,0 +1,44 @@
+<!--base.html Inhalt laden-->
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    <!--Titel Seite-->
+    <h1>Account Einstellungen</h1>
+    <!--Untertitel Seite-->
+    <h2>Account Einstellungen bearbeiten</h2>
+    <!--Post Methode für Account Einstelungen aktualisieren-->
+    <form method="POST" action="{{ url_for('main.update_account') }}">
+        <label for="username">Benutzername:</label>
+        <input type="text" name="username" value="{{ user.username }}" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ user.email }}" required>
+
+        <button type="submit">Update Account Einstellungen</button>
+    </form>
+    <!--Untertitel Seite-->
+    <h2>Passwort ändern</h2>
+    <!--Post Methode für Passwort aktualisieren-->
+    <form method="POST" action="{{ url_for('main.change_password') }}">
+        <input type="password" name="old_password" placeholder="aktuelles Passwort" required>
+        <input type="password" name="new_password" placeholder="neues Passwort" required>
+        <input type="password" name="confirm_password" placeholder="bestätigen neues Passwort" required>
+        <button type="submit">Passwort ändern</button>
+    </form>
+    <!--Untertitel Seite-->
+    <h2>Delete Account</h2>
+    <!--Post Methode für löschen Account-->
+    <form method="POST" action="{{ url_for('main.delete_account') }}">
+        <!--extra Aktion wenn Button angewählt wird für bestätigen Account löschen-->
+        <button type="submit" onclick="return confirm('Bist du sicher, dass du den Account löschen willst? Diese Aktion kann nicht mehr rückgängig gemacht werden.');">
+            Account löschen
+        </button>
+    </form>
+    <!--Link Main Dashboard ganz Links und Logout ganz rechts-->
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+        <a href="{{ url_for('main.dashboard') }}">zurück zum Dashboard</a>
+        <a href="/logout">Abmelden</a>
+    </div>
+</body>
+{% endblock %}

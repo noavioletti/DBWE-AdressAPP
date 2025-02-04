@@ -1,0 +1,74 @@
+<!--base.html Inhalt laden-->
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    <!--Titel Seite-->
+    <h1>Adresse ändern</h1>
+    <!--Post Methode für Adress Informationen aktualisieren-->
+    <form method="POST">
+        <!--HTML Flask-Verbindung-->
+        {{ form.hidden_tag() }}
+        <div>
+            <!--Verknüpfung Eingabe Element mit vorname-->
+            <label for="vorname">Vorname:</label>
+            <!--HTML Flask-Verbindung und Definition Format Text und Feld required-->
+            {{ form.vorname (type="text", required=True) }}
+        </div>
+        <div>
+            <!--Verknüpfung Eingabe Element mit nachname-->
+            <label for="nachname">Nachname:</label>
+            <!--HTML Flask-Verbindung und Definition Format Text und Feld required-->
+            {{ form.nachname (type="text", required=True) }}
+        </div>
+        <div>
+            <!--Verknüpfung Eingabe Element mit telefonnummer_privat-->
+            <label for="telefonnummer_privat">Telefonnummer Privat:</label>
+            <!--HTML Flask-Verbindung und Definition Format Text und Feld required-->
+            {{ form.telefonnummer_privat (type="text", required=True)}}
+        </div>
+        <div>
+            <!--Verknüpfung Eingabe Element mit telefonnummer_geschaeftlich-->
+            <label for="telefonnummer_geschaeftlich">Telefonnummer Geschaeftlich:</label>
+            <!--HTML Flask-Verbindung und Definition Format Text-->
+            {{ form.telefonnummer_geschaeftlich (type="text")}}
+        </div>
+        <div>
+            <!--Verknüpfung Eingabe Element mit email-->
+            <label for="email">Email:</label>
+            <!--HTML Flask-Verbindung und Definition Format Email-->
+            {{ form.email (type="email")}}
+        </div>
+        <div>
+            <!--Verknüpfung Eingabe Element mit strasse-->
+            <label for="strasse">Strasse:</label>
+            <!--HTML Flask-Verbindung und Definition Format Text und Feld required-->
+            {{ form.strasse (type="text", required=True)}}
+        </div>
+        <div>
+            <!--Verknüpfung Eingabe Element mit plz-->
+            <label for="plz">PLZ:</label>
+            <!--HTML Flask-Verbindung und Definition Format Number und Feld required-->
+            {{ form.plz (type="number", required=True)}}
+        </div>
+        <div>
+            <!--Verknüpfung Eingabe Element mit ort-->
+            <label for="ort">Ort:</label>
+            <!--HTML Flask-Verbindung und Definition Format Text und Feld required-->
+            {{ form.ort (type="text", required=True)}}
+        </div>
+        <div>
+            <!--Verknüpfung Eingabe Element mit land-->
+            <label for="land">Land:</label>
+            <!--HTML Flask-Verbindung und Definition Format Text und Feld required-->
+            {{ form.land (type="text", required=True)}}
+        </div>
+        <!--Button Submit-->
+        <div>
+            <button type="submit">Änderungen speichern</button>
+            <!--HTML Flask-Verbindung-->
+            {{ form.submit }}
+        </div>
+    </form>
+</body>
+{% endblock %}

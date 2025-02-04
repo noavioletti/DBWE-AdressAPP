@@ -1,0 +1,68 @@
+<!--base.html Inhalt laden-->
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <!--Begrüssung Current User mit Titel-->    
+    <h1>Hallo, {{ current_user.username }}</h1>    
+    <!--Link Account Einstellungen mit Einstellungsymbol-->
+    <a href="{{ url_for('main.account_settings') }}" class="account-button">⚙️ Account</a>
+    <!--Titel Seite-->     
+    <h2>Deine Adress-App</h2>
+    <!--Get Methode für anzeigen von Adressen-->
+    <form method="GET" action="{{ url_for('main.dashboard') }}">
+        <input type="text" name="query" value="{{ query }}" placeholder="Adresse suchen...">
+        <button type="submit">Suchen</button>
+    </form>
+    <!--Tabellen Form für einzelne Adressstruktur-->
+    <table>
+        <!--Titel von Tabellenspalte auf Website-->
+        <thead>
+            <tr>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Telefonnummer Privat</th>
+                <th>Telefonnummer Geschäftlich</th>
+                <th>Email</th>
+                <th>Strasse</th>
+                <th>PLZ</th>
+                <th>Ort</th>
+                <th>Land</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Definition wo Suchen in DB-->
+            {% for address in addresses %}
+            <tr>
+                <td>{{ address.vorname }}</td>
+                <td>{{ address.nachname }}</td>
+                <td>{{ address.telefonnummer_privat }}</td>
+                <td>{{ address.telefonnummer_geschaeftlich }}</td>
+                <td>{{ address.email }}</td>
+                <td>{{ address.strasse }}</td>
+                <td>{{ address.plz }}</td>
+                <td>{{ address.ort }}</td>
+                <td>{{ address.land }}</td>
+                <!--Aktionen für bearbeiten von Adressen-->
+                <td>
+                    <!--Post Methode für ändern Adresse-->                    
+                    <form method="POST" action="{{ url_for('main.edit_address', address_id=address.id) }}">
+                        <button type="submit">ändern</button>
+                    </form>
+                    <!--Post Methode für löschen von Adresse-->
+                    <form method="POST" action="{{ url_for('main.delete_address', address_id=address.id) }}">
+                        <button type="submit">löschen</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--Link add Adress ganz Links und Logout ganz rechts-->
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+        <a href="/add_address">neue Adresse hinzufügen</a>
+        <a href="/logout">Abmelden</a>
+    </div>    
+</body>
+{% endblock %}

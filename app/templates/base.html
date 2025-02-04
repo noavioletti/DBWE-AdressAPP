@@ -1,0 +1,33 @@
+<!--Definition das für HTML Format-->
+<!DOCTYPE html>
+<!--HTML Language Deutsch-->
+<html lang="de">
+<!--HTML Head definieren-->
+<head>
+    <!--Codierung UTF-8-->
+    <meta charset="UTF-8">
+    <!--Setzte Ansicht auf Bildschirmgröße von Geräts und definieren initialen Zoom-Level-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Titel-->
+    <title>{% block title %}Adress-App{% endblock %}</title>
+    <!--Link welcher auf stylesheet verweist-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css', _external=True) }}">
+</head>
+<body>
+    <!--wenn flash message bei Aktion auftritt wird Flash Message wiedergeben-->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <!--definieren Container für fixes Layout-->
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
