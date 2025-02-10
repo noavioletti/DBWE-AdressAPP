@@ -12,7 +12,7 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 
 def create_app():    
-    #definieren APP und static Folder von css Stylesheet
+    #definieren APP
     app = Flask(__name__)
     app.config.from_object(Config)
 
